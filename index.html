@@ -21,6 +21,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      margin: 10px 0;
     }
     button:hover {
       background-color: #005BB5;
@@ -40,32 +41,42 @@
     a:hover {
       text-decoration: underline;
     }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <h1>Add Calendar to Google Calendar</h1>
   <p>Tap the button below to add the calendar to your Google Calendar app on iOS.</p>
   <button onclick="redirectToCalendar()">Add to Calendar</button>
+  <p>View the calendar below (requires access permissions):</p>
+  <iframe src="https://calendar.google.com/calendar/embed?src=c_4c301166a5c6178072d2c381bdfa7bd7120f30c59dca4a84111eba6d8fb7dc95%40group.calendar.google.com&ctz=America%2FLos_Angeles"></iframe>
   <div class="instructions">
-    <p><strong>If the button doesn't work:</strong></p>
+    <p><strong>If you see "access denied" or the calendar doesn't add:</strong></p>
     <ol>
+      <li>Ensure you're signed into the Google ACCOUNT invited to the calendar.</li>
       <li>Open the <strong>Google Calendar app</strong>.</li>
       <li>Tap the <strong>menu</strong> (three lines, top left).</li>
       <li>Go to <strong>Settings</strong> > <strong>Add calendar</strong> > <strong>From URL</strong>.</li>
       <li>Paste this calendar ID: <br><strong>c301166a5c6178072d2c381bdf7a7bd7120f30c59dca4a84111eba6d8fb7dc95@group.calendar.google.com</strong></li>
       <li>Tap <strong>Add calendar</strong>.</li>
       <li>Return to the main view, tap the menu, and ensure the calendar is checked.</li>
+      <li>If "access denied" persists, contact the calendar owner to share it with your Google account.</li>
     </ol>
-    <p>Alternatively, open this link in Safari: <br><a href="https://calendar.google.com/calendar/u/3?cid=Y180YzMwMTE2NmE1YzYxNzgwNzJkMmMzODFiZGZhN2JkNzEyMGYzMGM1OWRjYTRhODQxMTFlYmE2ZDhmYjdkYzk1QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20">Add Calendar in Browser</a></p>
+    <p>Alternatively, open this link in Safari to add the calendar: <br><a href="https://calendar.google.com/calendar/u/3?cid=c301166a5c6178072d2c381bdf7a7bd7120f30c59dca4a84111eba6d8fb7dc95@group.calendar.google.com">Add Calendar in Browser</a></p>
   </div>
 
   <script>
     function redirectToCalendar() {
       const calendarId = 'c301166a5c6178072d2c381bdf7a7bd7120f30c59dca4a84111eba6d8fb7dc95@group.calendar.google.com';
-      const originalUrl = 'https://calendar.google.com/calendar/u/3?cid=Y180YzMwMTE2NmE1YzYxNzgwNzJkMmMzODFiZGZhN2JkNzEyMGYzMGM1OWRjYTRhODQxMTFlYmE2ZDhmYjdkYzk1QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20';
+      const subscriptionUrl = 'https://calendar.google.com/calendar/u/3?cid=c301166a5c6178072d2c381bdf7a7bd7120f30c59dca4a84111eba6d8fb7dc95@group.calendar.google.com';
       window.location.href = `googlecalendar://?cid=${encodeURIComponent(calendarId)}`;
       setTimeout(() => {
-        window.location.href = originalUrl;
+        window.location.href = subscriptionUrl;
       }, 1500);
     }
   </script>
