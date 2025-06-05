@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Calendar to Google Calendar (iOS)</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #007AFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005BB5;
+    }
+    .instructions {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    a {
+      color: #007AFF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Add Calendar to Google Calendar</h1>
+  <p>Tap the button below to add the calendar to your Google Calendar app on iOS.</p>
+  <button onclick="redirectToCalendar()">Add to Calendar</button>
+  <div class="instructions">
+    <p><strong>If the button doesn't work:</strong></p>
+    <ol>
+      <li>Open the <strong>Google Calendar app</strong>.</li>
+      <li>Tap the <strong>menu</strong> (three lines, top left).</li>
+      <li>Go to <strong>Settings</strong> > <strong>Add calendar</strong> > <strong>From URL</strong>.</li>
+      <li>Paste this calendar ID: <br><strong>c301166a5c6178072d2c381bdf7a7bd7120f30c59dca4a84111eba6d8fb7dc95@group.calendar.google.com</strong></li>
+      <li>Tap <strong>Add calendar</strong>.</li>
+      <li>Return to the main view, tap the menu, and ensure the calendar is checked.</li>
+    </ol>
+    <p>Alternatively, open this link in Safari: <br><a href="https://calendar.google.com/calendar/u/3?cid=Y180YzMwMTE2NmE1YzYxNzgwNzJkMmMzODFiZGZhN2JkNzEyMGYzMGM1OWRjYTRhODQxMTFlYmE2ZDhmYjdkYzk1QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20">Add Calendar in Browser</a></p>
+  </div>
+
+  <script>
+    function redirectToCalendar() {
+      const calendarId = 'c301166a5c6178072d2c381bdf7a7bd7120f30c59dca4a84111eba6d8fb7dc95@group.calendar.google.com';
+      const originalUrl = 'https://calendar.google.com/calendar/u/3?cid=Y180YzMwMTE2NmE1YzYxNzgwNzJkMmMzODFiZGZhN2JkNzEyMGYzMGM1OWRjYTRhODQxMTFlYmE2ZDhmYjdkYzk1QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20';
+      window.location.href = `googlecalendar://?cid=${encodeURIComponent(calendarId)}`;
+      setTimeout(() => {
+        window.location.href = originalUrl;
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
